@@ -26,7 +26,7 @@ vendor='nothing'
 
 with open('proprietary-files.txt', 'r') as f:
     lines = f.read().splitlines()
-vendorPath = '../../../vendor/' + vendor + '/' + device + '/proprietary'
+vendorPath = f'../../../vendor/{vendor}/{device}/proprietary'
 needSHA1 = False
 
 
@@ -62,7 +62,7 @@ def update():
             with open(os.path.join(vendorPath, filePath), 'rb') as f:
                 hash = sha1(f.read()).hexdigest()
 
-            lines[index] = '%s|%s' % (line, hash)
+            lines[index] = f'{line}|{hash}'
 
 
 if len(sys.argv) == 2 and sys.argv[1] == '-c':
